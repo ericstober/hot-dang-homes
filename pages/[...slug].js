@@ -44,7 +44,7 @@ export const getStaticProps = async (context) => {
 export const getStaticPaths = async () => {
   const { data } = await client.query({
     query: gql`
-      query NewQuery {
+      query AllPagesQuery {
         pages {
           nodes {
             uri
