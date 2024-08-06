@@ -5,6 +5,7 @@ import { Cover } from "components/Cover";
 import { Heading } from "components/Heading";
 import { Paragraph } from "components/Paragraph";
 import { theme } from "theme";
+import Image from "next/image";
 
 export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
@@ -64,6 +65,17 @@ export const BlockRenderer = ({ blocks }) => {
           <Column key={block.id} width={block.attributes?.width}>
             <BlockRenderer blocks={block.innerBlocks} />
           </Column>
+        );
+      }
+      case "core/image": {
+        return (
+          <Image
+            key={block.id}
+            src={block.attributes.url}
+            height={block.attributes.height}
+            width={block.attributes.width}
+            alt={block.attributes.alt || ""}
+          />
         );
       }
       default: {
