@@ -5,9 +5,10 @@ import { Cover } from "components/Cover";
 import { Heading } from "components/Heading";
 import { Paragraph } from "components/Paragraph";
 import { PropertySearch } from "components/PropertySearch";
+import { FormspreeForm } from "components/FormspreeForm";
+import { PropertyFeatures } from "components/PropertyFeatures";
 import { theme } from "theme";
 import Image from "next/image";
-import { FormspreeForm } from "components/FormspreeForm/FormspreeForm";
 
 export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
@@ -30,6 +31,18 @@ export const BlockRenderer = ({ blocks }) => {
           <FormspreeForm
             key={block.id}
             formId={block.attributes.data.form_id}
+          />
+        );
+      }
+      case "acf/propertyfeatures": {
+        return (
+          <PropertyFeatures
+            key={block.id}
+            price={block.attributes.price}
+            bedrooms={block.attributes.bedrooms}
+            bathrooms={block.attributes.bathrooms}
+            hasParking={block.attributes.has_parking}
+            petFriendly={block.attributes.pet_friendly}
           />
         );
       }
