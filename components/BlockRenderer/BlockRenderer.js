@@ -7,6 +7,7 @@ import { Paragraph } from "components/Paragraph";
 import { PropertySearch } from "components/PropertySearch";
 import { theme } from "theme";
 import Image from "next/image";
+import { FormspreeForm } from "components/FormspreeForm/FormspreeForm";
 
 export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
@@ -23,6 +24,14 @@ export const BlockRenderer = ({ blocks }) => {
       }
       case "acf/propertysearch": {
         return <PropertySearch key={block.id} />;
+      }
+      case "acf/formspreeform": {
+        return (
+          <FormspreeForm
+            key={block.id}
+            formId={block.attributes.data.form_id}
+          />
+        );
       }
       case "core/paragraph": {
         return (
