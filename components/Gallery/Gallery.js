@@ -31,7 +31,7 @@ export const Gallery = ({ columns, cropImages, items }) => {
             height={maxHeight || item.attributes.height}
             width={maxWidth || item.attributes.width}
             alt={item.attributes.alt || ""}
-            style={{ objectFit: "cover" }}
+            className="object-cover"
           />
         </div>
       ))}

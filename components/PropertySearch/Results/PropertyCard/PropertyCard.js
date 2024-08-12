@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 import numeral from "numeral";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -20,18 +19,12 @@ export const PropertyCard = ({
   petFriendly,
 }) => {
   return (
-    <Link
+    <a
       href={destination}
       className="border-2 border-slate-300 p-5 block bg-slate-100 hover:bg-slate-200"
     >
-      <div className="flex w-full h-[200px]">
-        <Image
-          src={image}
-          height={200}
-          width={400}
-          style={{ objectFit: "cover" }}
-          alt=""
-        />
+      <div className="flex w-full h-[200px] relative">
+        <Image src={image} fill sizes="300px" className="object-cover" alt="" />
       </div>
 
       <div className="mt-3 text-lg font-bold">{title}</div>
@@ -69,6 +62,6 @@ export const PropertyCard = ({
         </div>
       )}
       <div></div>
-    </Link>
+    </a>
   );
 };
