@@ -8,6 +8,7 @@ import { PropertySearch } from "components/PropertySearch";
 import { FormspreeForm } from "components/FormspreeForm";
 import { PropertyFeatures } from "components/PropertyFeatures";
 import { Gallery } from "components/Gallery";
+import { TickItem } from "components/TickItem";
 import { theme } from "theme";
 import Image from "next/image";
 
@@ -47,6 +48,13 @@ export const BlockRenderer = ({ blocks }) => {
           />
         );
       }
+      case "acf/tickitem": {
+        return (
+          <TickItem key={block.id}>
+            <BlockRenderer blocks={block.innerBlocks} />
+          </TickItem>
+        );
+      }
       case "core/paragraph": {
         return (
           <Paragraph
@@ -83,6 +91,14 @@ export const BlockRenderer = ({ blocks }) => {
           <Columns
             key={block.id}
             isStackedOnMobile={block.attributes.isStackedOnMobile}
+            textColor={
+              theme[block.attributes.textColor] ||
+              block.attributes.style?.color?.text
+            }
+            backgroundColor={
+              theme[block.attributes.backgroundColor] ||
+              block.attributes.style?.color?.background
+            }
           >
             <BlockRenderer blocks={block.innerBlocks} />
           </Columns>
