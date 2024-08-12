@@ -28,7 +28,7 @@ export const PropertyCard = ({
         <Image
           src={image}
           height={200}
-          width={300}
+          width={400}
           style={{ objectFit: "cover" }}
           alt=""
         />

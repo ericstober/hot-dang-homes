@@ -7,6 +7,7 @@ import { Paragraph } from "components/Paragraph";
 import { PropertySearch } from "components/PropertySearch";
 import { FormspreeForm } from "components/FormspreeForm";
 import { PropertyFeatures } from "components/PropertyFeatures";
+import { Gallery } from "components/Gallery";
 import { theme } from "theme";
 import Image from "next/image";
 
@@ -106,6 +107,16 @@ export const BlockRenderer = ({ blocks }) => {
             height={block.attributes.height}
             width={block.attributes.width}
             alt={block.attributes.alt || ""}
+          />
+        );
+      }
+      case "core/gallery": {
+        return (
+          <Gallery
+            key={block.id}
+            columns={block.attributes.columns || 3}
+            cropImages={block.attributes.imageCrop}
+            items={block.innerBlocks}
           />
         );
       }
